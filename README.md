@@ -48,7 +48,7 @@ This course is divided into 4 main sections. We will create specific branches fo
 
 1. **Clone the repository:**
   ```bash
-   git clone [https://github.com/kyle-liebenberg/hex-calculator.git](https://github.com/kyle-liebenberg/hex-calculator.git)
+   git clone https://github.com/kyle-liebenberg/hex-calculator.git
   ```
 
 ---
