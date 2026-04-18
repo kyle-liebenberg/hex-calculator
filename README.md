@@ -39,16 +39,16 @@ This course is divided into 4 main sections. We will create specific branches fo
   - *Branch:* `section-1-setup`
 - **[Section 2] Writing tests, drafting code** 
   - *Branch:* `section-2-tdd`
-- **[Section 3] Testing the GUI** 
-  - *Branch:* `section-3-gui`
-- **[Section 4] Porting to containers and cloud services**
+- **[Section 3] Testing the GUI (in progress...)** 
+  - *Branch:* `section-3-gui` 
+- **[Section 4] Porting to containers and cloud services (in progress..)**
   - *Branch:* `section-4-deployment`
 
 ## Getting Started (Local Setup)
 
 1. **Clone the repository:**
   ```bash
-   git clone [https://github.com/your-username/hex-calculator.git](https://github.com/your-username/hex-calculator.git)
+   git clone [https://github.com/kyle-liebenberg/hex-calculator.git](https://github.com/kyle-liebenberg/hex-calculator.git)
   ```
 
 ---
