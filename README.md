@@ -46,10 +46,37 @@ This course is divided into 4 main sections. We will create specific branches fo
 
 ## Getting Started (Local Setup)
 
-1. **Clone the repository:**
+#### 1. **Clone the repository:**
   ```bash
    git clone https://github.com/kyle-liebenberg/hex-calculator.git
   ```
+#### 2. **Create the virtual environment:**
+```Bash
+python3 -m venv .venv
+```
+#### 3. **Activate the environment:**
+- On macOS/Linux:
+```Bash
+source .venv/bin/activate
+```
+- On Windows:
+```Bash
+.venv\Scripts\activate
+```
+#### 4. **Install dependencies:**
+```Bash
+pip install pytest
+```
+
+#### 5. **Enter `backend/` directory:**
+```bash
+pip install pytest
+```
+
+#### 6. Run test suite:
+```bash
+python -m pytest test/
+```
 
 ---
 
