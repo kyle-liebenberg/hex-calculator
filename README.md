@@ -66,11 +66,14 @@ source .venv/bin/activate
 #### 4. **Install dependencies:**
 ```Bash
 pip install pytest
+pip install fastapi uvicorn
+pip install pytest-playwright
+playwright install
 ```
 
 #### 5. **Enter `backend/` directory:**
 ```bash
-pip install pytest
+cd backend
 ```
 
 #### 6. Run test suite:
