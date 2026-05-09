@@ -45,13 +45,44 @@ document.getElementById('btn-clear').addEventListener('click', () => {
 });
 
 // Equal Button (Placeholder for Video 2 API connection)
-document.getElementById('btn-equal').addEventListener('click', () => {
+document.getElementById('btn-equal').addEventListener('click', async () => {
     if (!currentOperation || previousInput === '') return;
     
     // For Video 1: We just display a loading state. 
     // In Video 2, we will send these values to Python!
     equationDisplay.innerText = `${previousInput} ${currentOperation} ${currentInput} =`;
     mainDisplay.innerText = "Loading...";
+
+    try {
+        const response = await fetch('http://127.0.0.1:8000/calculate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                val1: previousInput,
+                val2: currentInput,
+                operation: currentOperation
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            mainDisplay.innerText = data.result;
+            // Set the result as current input so we can chain math operations
+            currentInput = data.result; 
+        } else {
+            mainDisplay.innerText = "Error";
+            alert(data.detail); // Shows our Python ValueError constraints to the user 
+        }
+    } catch (error) {
+        mainDisplay.innerText = "Error";
+        console.error("API Error:", error);
+    }
+
+    previousInput = '';
+    currentOperation = null;
 });
 
 function updateDisplay() {
