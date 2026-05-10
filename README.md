@@ -39,7 +39,7 @@ This course is divided into 4 main sections. We will create specific branches fo
   - *Branch:* `section-1-setup`
 - **[Section 2] Writing tests, drafting code** 
   - *Branch:* `section-2-tdd`
-- **[Section 3] Testing the GUI (in progress...)** 
+- **[Section 3] Testing the GUI** 
   - *Branch:* `section-3-gui` 
 - **[Section 4] Porting to containers and cloud services (in progress..)**
   - *Branch:* `section-4-deployment`
@@ -71,14 +71,26 @@ pip install pytest-playwright
 playwright install
 ```
 
-#### 5. **Enter `backend/` directory:**
+#### 5. **Run the backend python server**
 ```bash
 cd backend
+uvicorn src.main:app --reload
 ```
 
-#### 6. Run test suite:
+#### 6. Open `/frontend/index.html` in your browser to view the hexadecimal calculator :) 
+
+## Running Tests
+
+#### 1. Run backend test suite:
 ```bash
+cd backend
 python -m pytest test/
+```
+
+#### 2. Run frontend test suite:
+```bash
+cd frontend
+python -m pytest test_gui.py
 ```
 
 ---
