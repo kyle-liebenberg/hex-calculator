@@ -16,9 +16,22 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest
+        pip install pytest pytest-playwright fastapi uvicorn httpx
+        playwright install --with-deps
 
-    - name: Run Pytest
+    - name: Run Backend Server In Background
+      run: |
+        cd backend
+        uvicorn src.main:app &
+        sleep 3
+
+    - name: Run Backend Pytest
       run: |
         cd backend
         python -m pytest test/
+
+    - name: Run Frontend Pytest
+      run: |
+        cd frontend
+        python -m pytest test_gui.py
+        
