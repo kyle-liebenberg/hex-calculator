@@ -66,14 +66,22 @@ jobs:
       uses: appleboy/ssh-action@master
       env: 
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       with:
         host: ${{ secrets.EC2_HOST }} 
         username: ${{ secrets.EC2_USERNAME }} 
         key: ${{ secrets.EC2_SSH_KEY }}
-        envs: ECR_REGISTRY
+        envs: ECR_REGISTRY, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
         script: |
+          export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+          export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+          export AWS_DEFAULT_REGION=eu-north-1
+          
           aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin $ECR_REGISTRY
+          
           docker pull $ECR_REGISTRY/hex-calculator:latest
           docker stop hex-calc || true
           docker rm hex-calc || true
-          docker run -p 80:8000 --name hex-calc $ECR_REGISTRY/hex-calculator:latest
+          
+          docker run -d -p 80:8000 --name hex-calc $ECR_REGISTRY/hex-calculator:latest
