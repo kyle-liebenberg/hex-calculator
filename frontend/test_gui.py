@@ -4,8 +4,7 @@ from playwright.sync_api import Page, expect
 
 @pytest.fixture
 def calc_url():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    return f"file://{os.path.join(current_dir, 'index.html')}"
+    return "http://127.0.0.1:8000" 
 
 # --- CORE ARITHMETIC TESTS ---
 
