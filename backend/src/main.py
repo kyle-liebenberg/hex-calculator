@@ -1,5 +1,7 @@
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel 
 from src.calculator import add_hex, sub_hex, mul_hex, div_hex
 
@@ -36,3 +38,8 @@ def calculate(req: CalcRequest):
     except ValueError as e:
         # If our strict TDD constraints are violated, send the error back 
         raise HTTPException(status_code=400, detail=str(e))
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FRONTEND_DIR = os.path.join(os.path.dirname(BASE_DIR), 'frontend')
+
+app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")

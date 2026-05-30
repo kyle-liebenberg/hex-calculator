@@ -54,7 +54,7 @@ document.getElementById('btn-equal').addEventListener('click', async () => {
     mainDisplay.innerText = "Loading...";
 
     try {
-        const response = await fetch('http://127.0.0.1:8000/calculate', {
+        const response = await fetch('/calculate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
