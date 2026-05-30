@@ -4,7 +4,7 @@ from playwright.sync_api import Page, expect
 
 @pytest.fixture
 def calc_url():
-    return "http://127.0.0.1:8000"
+    return "http://127.0.0.1:8000" 
 
 # --- CORE ARITHMETIC TESTS ---
 
